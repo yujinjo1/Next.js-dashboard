@@ -31,7 +31,7 @@ export function DeleteInvoice({ id }: { id: string }) {
 
   return (
    <form action={async (formData) => {
-      await deleteInvoiceWithId(formData);
+      await deleteInvoiceWithId();
     }}>
 
     
