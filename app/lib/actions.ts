@@ -89,7 +89,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
 }
 
 // 2. 송장 수정 함수
-export async function updateInvoice(id: string, formData: FormData) {
+export async function updateInvoice(id: string,prevState: State, formData: FormData) {
   // 수정 함수도 safeParse를 사용하는 것이 보안 및 에러 처리에 더 좋습니다.
   const validatedFields = UpdateInvoice.safeParse({
     customerId: formData.get('customerId'),
