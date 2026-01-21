@@ -1,5 +1,5 @@
 'use client';
- 
+
 import {
   UserGroupIcon,
   HomeIcon,
@@ -8,12 +8,21 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
- 
-// ...
- 
+
+// 1. 메뉴 데이터 정의 (이 부분이 없어서 에러가 났던 것입니다)
+const links = [
+  { name: 'Home', href: '/dashboard', icon: HomeIcon },
+  {
+    name: 'Invoices',
+    href: '/dashboard/invoices',
+    icon: DocumentDuplicateIcon,
+  },
+  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+];
+
 export default function NavLinks() {
-  const pathname = usePathname();
- 
+  const pathname = usePathname(); // 현재 URL 경로를 가져옴
+
   return (
     <>
       {links.map((link) => {
@@ -22,6 +31,7 @@ export default function NavLinks() {
           <Link
             key={link.name}
             href={link.href}
+            // 2. clsx를 사용하여 현재 활성화된 링크에만 파란색 스타일 적용
             className={clsx(
               'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
               {
